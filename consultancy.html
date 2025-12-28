@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Consultancy - Dr. Sengupta & Associates</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0&amp;family=Manrope:wght@400;700;800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"> 
+    
+    <link rel="stylesheet" media="screen" href="https://www.drsga.com/themes/milo/assets/css/plugins.css?v=0.0.217">
+    <link rel="stylesheet" media="screen" href="https://www.drsga.com/themes/milo/assets/css/style.css?v=0.0.217">
+    <link rel="stylesheet" media="screen" href="https://www.drsga.com/assets/css/custom?v=0.0.217">
+    <link rel="stylesheet" media="screen" href="https://www.drsga.com/themes/milo/assets/css/custom.css?v=0.0.217">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* INLINE FIXES FOR 3-COLUMN LAYOUT */
+        .hero-photo {
+            width: 100%;
+            height: 400px; /* Tall Portrait Mode */
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .brochure-compact {
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid #012061;
+        }
+        .modal-overlay { display: none; } /* Force Hidden initially */
+    </style>
+</head>
+
+<body class="full-width-layout">
+
+<header class="wrapper bg-white shadow-sm" style="position: sticky; top: 0; z-index: 1000;">
+    <nav class="navbar navbar-expand-lg classic navbar-light">
+        <div class="container flex-lg-row flex-nowrap align-items-center">
+            
+            <div class="navbar-brand">
+                <a href="https://www.drsga.com">
+                    <img src="https://drsga.com/storage/local/aakz/app/theme/1/footer-logo.png" class="header-logo" alt="DRSGA Logo">
+                </a>
+            </div>
+
+            <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link fw-bold" href="https://www.drsga.com">Home</a></li>
+                        <li class="nav-item"><a class="nav-link fw-bold active text-brand" href="#">Consultancy</a></li>
+                        <li class="nav-item"><a class="nav-link fw-bold" href="https://www.drsga.com/contact-us">Contact</a></li>
+                        
+                        <li class="nav-item border-start ps-3 ms-3 d-none d-lg-block">
+                            <a class="nav-link fw-bold text-danger" href="#" onclick="openAdminPanel()">
+                                <span class="material-symbols-sharp me-1" style="font-size:18px; vertical-align:middle;">admin_panel_settings</span>
+                                Admin
+                            </a>
+                        </li>
+
+                        <li class="nav-item d-lg-none mt-3 pt-3 border-top">
+                             <a class="nav-link fw-bold text-danger" href="#" onclick="openAdminPanel()">
+                                Admin Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="navbar-other ms-auto w-100 d-none d-lg-none">
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                    <li class="nav-item">
+                        <button class="hamburger offcanvas-nav-btn"><span></span></button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <section class="wrapper pt-10 pb-10" style="background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h1 class="display-3 fw-900 text-dark" style="font-family: 'Playfair Display', serif;">Dr. Sengupta & Associates</h1>
+                    <p class="lead text-muted">Global Excellence in Accreditation & Quality Management Systems since 2000.</p>
+                </div>
+            </div>
+
+            <div class="row gx-lg-5 align-items-start">
+                
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <img src="profile.png" alt="Dr. Sengupta" class="hero-photo">
+                </div>
+
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="fw-bold text-brand mb-3">Pioneering Quality Infrastructure</h3>
+                    <p class="text-dark mb-4" style="line-height: 1.8; text-align: justify;">
+                        With over <strong>40 years of experience</strong>, Dr. R. Sengupta (Ex-Additional Director, ERTL, Govt. of India) stands as a pillar of expertise in the field of Standardization. 
+                        Having guided 800+ organizations across India, Bangladesh, and the UAE, our firm specializes in translating complex international standards into actionable business processes.
+                    </p>
+                    <p class="text-dark mb-4" style="line-height: 1.8; text-align: justify;">
+                        Whether you are a hospital seeking <strong>NABH Accreditation</strong> or a laboratory aiming for <strong>NABL (ISO 17025)</strong>, our online consultancy model brings this veteran expertise directly to your screen. 
+                        We ensure your documentation, staff training, and internal audits are compliant before the final assessment.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-2 mt-2">
+                        <span class="badge bg-dark px-3 py-2 rounded-pill">ISO 9001:2015</span>
+                        <span class="badge bg-dark px-3 py-2 rounded-pill">NABH Full Accreditation</span>
+                        <span class="badge bg-dark px-3 py-2 rounded-pill">NABL (ISO 17025)</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="brochure-compact">
+                        <span class="material-symbols-sharp text-brand mb-2" style="font-size: 40px;">menu_book</span>
+                        <h5 class="fw-bold text-dark mb-1">Service Brochure</h5>
+                        <p class="text-muted small mb-3">Download full catalog.</p>
+                        
+                        <a href="brochure.pdf" download class="btn btn-primary w-100 btn-sm rounded-pill fw-bold">
+                            Download PDF <span class="material-symbols-sharp ms-1" style="font-size: 14px; vertical-align: middle;">download</span>
+                        </a>
+                        <p class="text-muted xsmall mt-2 mb-0">PDF Size: 2.4 MB</p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-white rounded-3 shadow-sm border text-center">
+                        <h2 class="text-brand fw-bold m-0">800+</h2>
+                        <p class="small text-muted m-0">Clients Globally</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container pt-10 pb-5">
+        <div class="text-center mb-8">
+            <h2 class="display-6 text-brand fw-800 mb-2">Select Consultation</h2>
+            <div style="width: 50px; height: 3px; background: #012061; margin: 10px auto;"></div>
+        </div>
+
+        <div class="row gx-3 gx-lg-4 gy-4 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="consultancy-card text-center h-100">
+                    <h4 class="fw-bold text-dark">Basic Session</h4>
+                    <div class="price-tag">₹1,000</div>
+                    <p class="text-muted small fw-bold mb-3">30 Mins • Quick Guidance</p>
+                    <hr class="my-3" style="opacity: 0.1;">
+                    <ul class="list-unstyled mb-4 text-start small ps-2">
+                        <li><span class="text-brand fw-bold me-2">✔</span> One-on-One Session</li>
+                        <li><span class="text-brand fw-bold me-2">✔</span> General Queries</li>
+                    </ul>
+                    <button onclick="openModal('Basic Session', '1000')" class="btn btn-primary rounded-pill w-100 fw-bold btn-sm">Select Basic</button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="consultancy-card text-center h-100" style="border: 2px solid #012061; background: #fff;">
+                    <div class="bg-brand text-white px-2 py-1 rounded-pill small fw-bold d-inline-block mb-2" style="font-size: 0.7rem;">RECOMMENDED</div>
+                    <h4 class="fw-bold text-dark">Standard Session</h4>
+                    <div class="price-tag">₹2,000</div>
+                    <p class="text-muted small fw-bold mb-3">60 Mins • Deep Dive</p>
+                    <hr class="my-3" style="opacity: 0.1;">
+                    <ul class="list-unstyled mb-4 text-start small ps-2">
+                        <li><span class="text-brand fw-bold me-2">✔</span> Strategy Discussion</li>
+                        <li class="text-brand fw-bold"><span class="text-brand me-2">✔</span> Includes MoM Report</li>
+                    </ul>
+                    <button onclick="openModal('Standard Session', '2000')" class="btn btn-brand bg-brand text-white rounded-pill w-100 py-2 fw-bold shadow-sm btn-sm">Select Standard</button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="consultancy-card text-center h-100">
+                    <h4 class="fw-bold text-dark">Group Webinar</h4>
+                    <div class="price-tag">₹3,500</div>
+                    <p class="text-muted small fw-bold mb-3">90 Mins • Team Training</p>
+                    <hr class="my-3" style="opacity: 0.1;">
+                    <ul class="list-unstyled mb-4 text-start small ps-2">
+                        <li><span class="text-brand fw-bold me-2">✔</span> Up to 5 Participants</li>
+                        <li><span class="text-brand fw-bold me-2">✔</span> Team Strategy</li>
+                    </ul>
+                    <button onclick="openModal('Group Webinar', '3500')" class="btn btn-outline-primary rounded-pill w-100 fw-bold btn-sm">Select Group</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wrapper pt-5 pb-14 bg-white">
+        <div class="container">
+            <h4 class="fw-bold text-dark mb-4 border-bottom pb-2">Comprehensive Solutions</h4>
+            
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-0 bg-blue-custom p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-symbols-sharp text-brand fs-32 me-3">verified</span>
+                            <h5 class="m-0 fw-bold text-dark">ISO Certification Guidance</h5>
+                        </div>
+                        <p class="text-muted small">Complete implementation support for QMS (ISO 9001), EMS (ISO 14001), and OHSMS (ISO 45001). We handle documentation, gap analysis, and auditor selection.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-0 bg-blue-custom p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-symbols-sharp text-brand fs-32 me-3">local_hospital</span>
+                            <h5 class="m-0 fw-bold text-dark">NABH Accreditation</h5>
+                        </div>
+                        <p class="text-muted small">Specialized consultancy for Hospitals. We guide you through the 10 Chapters and 100+ Standards of NABH Entry Level & Full Accreditation.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-0 bg-blue-custom p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-symbols-sharp text-brand fs-32 me-3">science</span>
+                            <h5 class="m-0 fw-bold text-dark">NABL Laboratory Setup</h5>
+                        </div>
+                        <p class="text-muted small">For Testing & Calibration Labs. We help with Quality Manual preparation, Uncertainty Measurement, and Inter-lab comparison (ILC).</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-0 bg-blue-custom p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-symbols-sharp text-brand fs-32 me-3">precision_manufacturing</span>
+                            <h5 class="m-0 fw-bold text-dark">Technical Audits</h5>
+                        </div>
+                        <p class="text-muted small">ESD Control Program (ANSI/ESD S20.20) and Process Audits (IPC-A-610) for Electronic Manufacturing Service (EMS) companies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-dark text-white pt-10 pb-5">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="col-lg-4">
+                <a href="https://www.drsga.com">
+                    <img src="https://drsga.com/storage/local/aakz/app/theme/1/footer-logo.png" class="mb-4" width="180" alt="Dr. Sengupta Logo">
+                </a>
+                <p class="small text-white-50">Dr. Sengupta & Associates is a premier Techno-Management Consulting firm dedicated to quality infrastructure.</p>
+            </div>
+
+            <div class="col-lg-4">
+                <h5 class="fw-bold text-white mb-3">Contact Us</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2">D-304, Beverly Park, Mira Road (E), Thane</li>
+                    <li class="mb-2">+91 93222 86865</li>
+                    <li>drsenguptaconsult@gmail.com</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4">
+                <h5 class="fw-bold text-white mb-3">Quick Links</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2"><a href="https://www.drsga.com" class="text-reset text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#" class="text-reset text-decoration-none">Consultancy</a></li>
+                    <li class="mb-2"><a href="brochure.pdf" download class="text-reset text-decoration-none">Download Brochure</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="border-secondary my-5">
+        <p class="text-center small text-white-50 mb-0">© 2025 Dr. Sengupta & Associates. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="paymentModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="d-flex justify-content-end">
+            <button onclick="closeModal()" style="background:none; border:none; font-size:28px; line-height: 1;">&times;</button>
+        </div>
+
+        <div id="paymentView">
+            <h4 class="fw-bold mb-1">Confirm Booking</h4>
+            <p class="text-muted small mb-4">You are booking: <strong id="pkgName">Session</strong></p>
+            
+            <div class="bg-light p-4 rounded-3 mb-3">
+                <div id="qrContainer" class="qr-wrapper">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=drsenguptaconsult@gmail.com&pn=DrSengupta&am=2000" class="qr-img" alt="Payment QR">
+                    <div id="laserLine" class="laser-line"></div>
+                </div>
+                
+                <h2 class="text-brand fw-800 m-0 mt-2" id="pkgPrice">₹2000</h2>
+                <p class="small text-muted mt-2">Scan with any UPI App</p>
+            </div>
+
+            <p id="scanText" class="small text-dark fw-bold" style="display:none;">Scanning Payment...</p>
+
+            <button onclick="startScanning()" id="verifyBtn" class="btn btn-primary w-100 rounded-pill fw-bold py-2">
+                <span class="material-symbols-sharp me-2" style="font-size:18px; vertical-align:middle;">qr_code_scanner</span>
+                Verify & Proceed
+            </button>
+        </div>
+
+        <div id="successView" class="success-view">
+            <span class="material-symbols-sharp success-icon">check_circle</span>
+            <h3 class="fw-bold text-dark">Payment Verified!</h3>
+            <p class="text-muted small mb-4">Transaction ID: <span class="text-dark fw-bold">TXN882910</span></p>
+            <div class="alert alert-warning small text-start py-2 px-3">
+                <strong>Next Step:</strong> Please select your preferred date & time on the calendar.
+            </div>
+            <a id="calendarBtn" href="#" target="_blank" class="btn btn-success w-100 rounded-pill fw-bold py-2 shadow-sm">
+                Select Date on Calendar <span class="material-symbols-sharp ms-1" style="font-size:18px; vertical-align:middle;">calendar_month</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<div id="adminModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 800px; text-align: left;">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+            <h3 class="fw-bold text-dark m-0">Admin Dashboard</h3>
+            <button onclick="closeAdminPanel()" style="background:none; border:none; font-size:28px;">&times;</button>
+        </div>
+
+        <form id="momForm">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="small fw-bold text-muted">Client Name</label>
+                    <input type="text" id="clientName" class="form-control" placeholder="e.g. Mr. Rajesh Sharma">
+                </div>
+                <div class="col-md-6">
+                    <label class="small fw-bold text-muted">Client Email</label>
+                    <input type="email" id="clientEmail" class="form-control" placeholder="client@email.com">
+                </div>
+                
+                <div class="col-md-6">
+                    <label class="small fw-bold text-muted">Organization</label>
+                    <input type="text" id="clientOrg" class="form-control" placeholder="e.g. Apollo Hospitals">
+                </div>
+                <div class="col-md-3">
+                    <label class="small fw-bold text-muted">Meeting Date</label>
+                    <input type="date" id="meetingDate" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label class="small fw-bold text-muted">Time</label>
+                    <input type="time" id="meetingTime" class="form-control">
+                </div>
+
+                <div class="col-12">
+                    <label class="small fw-bold text-muted">Agenda</label>
+                    <input type="text" id="agenda" class="form-control" placeholder="e.g. NABH Gap Analysis">
+                </div>
+                
+                <div class="col-12">
+                    <label class="small fw-bold text-muted">Discussion Summary</label>
+                    <textarea id="discussion" class="form-control" rows="3" placeholder="- Discussed current SOPs..."></textarea>
+                </div>
+                
+                <div class="col-12">
+                    <label class="small fw-bold text-muted">Key Recommendations / Action Points</label>
+                    <textarea id="recommendations" class="form-control" rows="3" placeholder="1. Update Fire Safety Manual..."></textarea>
+                </div>
+            </div>
+
+            <div class="d-flex gap-3 mt-4">
+                <button type="button" onclick="generatePDF()" class="btn btn-primary w-50 fw-bold">
+                    <span class="material-symbols-sharp me-2">picture_as_pdf</span> Generate MoM PDF
+                </button>
+                <button type="button" onclick="draftEmail()" class="btn btn-success w-50 fw-bold">
+                    <span class="material-symbols-sharp me-2">mail</span> Open Email Draft
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="loginModal" class="modal-overlay" style="z-index: 10000;">
+    <div class="modal-content" style="max-width: 350px; padding: 40px;">
+        <span class="material-symbols-sharp text-primary mb-3" style="font-size: 48px;">lock</span>
+        <h4 class="fw-bold mb-2">Admin Login</h4>
+        <p class="text-muted small mb-4">Please verify your identity.</p>
+        
+        <input type="password" id="adminPassword" class="form-control text-center mb-3" placeholder="Enter Password">
+        
+        <button onclick="checkLogin()" class="btn btn-primary w-100 fw-bold py-2 rounded-pill">Login Access</button>
+        <button onclick="closeLogin()" class="btn btn-link text-muted mt-2" style="text-decoration: none;">Cancel</button>
+    </div>
+</div>
+</body>
+</html>

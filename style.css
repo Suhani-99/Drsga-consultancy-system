@@ -1,0 +1,386 @@
+/* style.css - Custom Styles for Consultancy Page */
+
+/* --- LAYOUT UTILITIES --- */
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    font-family: 'Manrope', sans-serif; 
+}
+main { 
+    flex: 1; 
+}
+footer { 
+    position: relative; 
+    z-index: 10; 
+    margin-top: auto; 
+}
+
+/* --- TYPOGRAPHY & COLORS --- */
+.text-brand { color: #012061; }
+.bg-brand { background-color: #012061; }
+.fw-800 { font-weight: 800; }
+
+/* --- BROCHURE CARD (Hero Section) --- */
+.brochure-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border-top: 5px solid #012061;
+    text-align: center;
+}
+
+/* --- COMPACT PRICING CARDS --- */
+.consultancy-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px; /* Slightly smaller radius */
+    padding: 25px 20px; /* REDUCED from 40px */
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.consultancy-card:hover {
+    transform: translateY(-5px); /* Less movement */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #012061;
+}
+.price-tag { 
+    font-size: 2.2rem; /* REDUCED from 3rem */
+    font-weight: 800; 
+    color: #012061; 
+    margin: 10px 0; /* Tighter margin */
+}
+.consultancy-card h4 {
+    font-size: 1.2rem; /* Compact Title */
+    margin-bottom: 5px;
+}
+.consultancy-card .btn {
+    margin-top: auto;
+    padding: 10px 0; /* Sleeker button */
+    font-size: 0.95rem;
+}
+/* This makes the checklist inside the card tighter */
+.consultancy-card ul li {
+    margin-bottom: 8px !important; /* Less space between items */
+    font-size: 0.9rem;
+}
+
+/* --- DETAILED SERVICE BOXES --- */
+.service-detail-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    height: 100%;
+}
+.service-detail-box:hover {
+    border-color: #012061;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+}
+.check-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+    font-size: 0.95rem;
+    color: #555;
+}
+.check-list li::before {
+    content: '✓';
+    color: #012061;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* --- NAVBAR ACTIVE STATE --- */
+.nav-link.active-page { 
+    color: #012061 !important; 
+    font-weight: 800 !important; 
+}
+/* --- FINAL PAYMENT MODAL (BLACK LASER + BLUE OVERLAY) --- */
+.modal-content {
+    transition: all 0.3s ease;
+}
+
+/* 1. Wrapper: Holds the Image, Overlay, and Laser */
+.qr-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0; /* Default Grey Border */
+    transition: all 0.3s ease;
+}
+
+/* 2. The Blue "Selection" Tint (Hidden by default) */
+.qr-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(0, 174, 255, 0.15); /* Light Blue Tint */
+    opacity: 0; /* Invisible initially */
+    transition: opacity 0.3s ease;
+    z-index: 5; /* Sits on top of image, below laser */
+}
+
+/* 3. The Active State (Triggers the Blue Look) */
+.qr-wrapper.scanning-active {
+    border-color: #00aeff; /* Bright Blue Border */
+    box-shadow: 0 0 20px rgba(0, 174, 255, 0.3); /* Blue Glow */
+}
+.qr-wrapper.scanning-active::after {
+    opacity: 1; /* Turn on the Blue Tint */
+}
+
+.qr-img {
+    width: 160px;
+    height: 160px;
+    display: block;
+}
+
+/* 4. The Laser Line (Now BLACK) */
+.laser-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px; /* Slightly thinner for elegance */
+    background: #000000; /* BLACK LASER */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Soft Shadow */
+    display: none; 
+    z-index: 10; /* Sits on top of everything */
+}
+
+/* Animation Logic */
+.laser-animate {
+    display: block;
+    animation: scanTopToBottom 1.5s infinite linear;
+}
+
+@keyframes scanTopToBottom {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.success-view {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+.material-symbols-sharp.success-icon {
+    font-size: 60px;
+    color: #28a745;
+    margin-bottom: 15px;
+    display: block;
+}
+/* --- NEW STYLES FOR DETAILED UI --- */
+
+/* 1. Icon Circles for Solution Cards */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6eaf5; /* Light blue-grey */
+    color: #012061;
+}
+
+/* 2. Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* 3. Footer Links Hover */
+.footer a:hover {
+    color: #fff !important;
+    opacity: 1 !important;
+    text-decoration: underline !important;
+}
+
+/* 4. Font adjustment for "Heavy" look */
+.fw-900 { font-weight: 900; }
+.ls-xl { letter-spacing: 2px; }
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Manrope', sans-serif;
+}
+
+/* 1. HERO & LAYOUT HELPERS (The New 3-Column Look) */
+.hero-photo {
+    width: 100%;
+    height: 400px; /* Tall Portrait Mode */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+.hero-photo:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.brochure-compact {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 5px solid #012061; /* Brand Blue Top Border */
+}
+
+/* 2. CARD HOVER EFFECTS */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* 3. FONT WEIGHTS */
+.fw-900 { font-weight: 900; }
+
+/* --- PAYMENT MODAL ANIMATIONS (BLACK LASER + BLUE TINT) --- */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px; /* Keeps payment modal small */
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+
+    /* --- SCROLL FIX FOR ADMIN DASHBOARD --- */
+    max-height: 90vh;   /* Limit height to 90% of screen */
+    overflow-y: auto;   /* Add scrollbar if content is too long */
+    position: relative;
+}
+
+/* QR WRAPPER: Holds Image + Laser + Blue Tint */
+.qr-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+/* The Blue "Selection" Tint (Hidden by default) */
+.qr-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(0, 174, 255, 0.15); /* Light Blue Tint */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5; 
+}
+
+/* The Active State (Triggers the Blue Look) */
+.qr-wrapper.scanning-active {
+    border-color: #00aeff;
+    box-shadow: 0 0 20px rgba(0, 174, 255, 0.3);
+}
+.qr-wrapper.scanning-active::after {
+    opacity: 1; 
+}
+
+.qr-img {
+    width: 160px;
+    height: 160px;
+    display: block;
+}
+
+/* THE BLACK LASER LINE */
+.laser-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: #000000; /* BLACK LASER */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: none; 
+    z-index: 10;
+}
+
+/* Animation Logic */
+.laser-animate {
+    display: block;
+    animation: scanTopToBottom 1.5s infinite linear;
+}
+
+@keyframes scanTopToBottom {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Success View */
+.success-view {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+.material-symbols-sharp.success-icon {
+    font-size: 60px;
+    color: #28a745;
+    margin-bottom: 15px;
+    display: block;
+}
+/* --- COMPREHENSIVE SOLUTIONS: BLUE CARDS --- */
+.bg-blue-custom {
+    background-color: #f0f7ff !important; /* Very soft light blue */
+    border: 1px solid #dbeafe !important; /* Subtle blue border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-blue-custom:hover {
+    background-color: #e0f0ff !important; /* Slightly darker on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(1, 32, 97, 0.15) !important;
+}
+/* --- ADMIN DASHBOARD STYLES --- */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #012061;
+    box-shadow: 0 0 5px rgba(1, 32, 97, 0.2);
+}
